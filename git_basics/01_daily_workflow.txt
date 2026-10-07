@@ -1,0 +1,132 @@
+DAILY WORKFLOW — STATUS -> BRANCH -> COMMIT -> SYNC -> PUSH
+
+----------------------------------------
+1. STATUS / DIFF — use this constantly
+----------------------------------------
+
+When: on repo open, before editing, before committing, after any AI tool
+changes files, before pushing — whenever you're unsure what changed.
+
+git status
+  current branch, modified/staged/untracked files
+  example:
+    modified:   src/payment_posting.py
+    modified:   tests/test_payment_posting.py
+    untracked:  debug_output.json
+
+git status --short
+  " M" = modified but not staged   "M " = staged   "??" = untracked
+
+git diff                 -> changes NOT staged yet (whole repo or one file)
+git diff --staged        -> exactly what the next commit will contain
+git diff main...HEAD     -> total effect of your branch vs. main (for a PR)
+git diff --name-only     -> just the list of changed files
+
+Best practice before every commit: git status, then git diff, then
+git diff --staged.
+
+
+----------------------------------------
+2. BRANCHES — isolate one task
+----------------------------------------
+
+Create a branch for a bug fix, feature, or investigation. Do not casually
+edit main.
+
+git switch -c fix/payment-posting-duplicate
+git switch -c feature/payer-policy-classification
+git switch -c debug/acme-csv-import
+
+Naming: fix/..., feature/..., debug/..., chore/...
+
+git switch main                         (switch back)
+git branch                              (list local)
+git branch -a                           (list local + remote)
+git branch -m fix/payment-posting-duplicate   (rename current branch)
+git branch -d fix/payment-posting-duplicate   (delete after merge)
+git branch -D experiment/failed-agent-router  (force delete — only if
+                                                you accept losing unmerged
+                                                commits)
+
+
+----------------------------------------
+3. STAGE + COMMIT
+----------------------------------------
+
+Stage specific files (don't reflexively use `git add .`):
+git add src/payment_posting.py tests/test_payment_posting.py
+
+Stage part of a file when it mixes a real fix with debug prints:
+git add -p src/payment_posting.py
+
+Unstage without losing the change:
+git restore --staged customer_data.csv
+
+Review before committing — you should be able to explain every line:
+git diff --staged
+
+Commit:
+git commit -m "Fix duplicate payment posting retry"
+
+Good messages:                       Bad messages:
+Fix null payer mapping on import     update
+Add validation for missing auth ID   fix stuff
+Add regression test for duplicate    changes / final
+remittance posting
+
+Amend the most recent commit (only if not yet shared/pushed):
+git add tests/test_payment_posting.py
+git commit --amend
+
+
+----------------------------------------
+4. SYNC WITH MAIN
+----------------------------------------
+
+git fetch origin                      (safe — downloads remote info only,
+                                        does not touch your working files)
+git log HEAD..origin/main --oneline   (see what main has that you don't)
+
+git switch main
+git pull --ff-only                   (--ff-only avoids an accidental
+                                       merge commit)
+
+Bring main into your feature branch:
+git switch fix/payment-posting-duplicate
+git merge main
+
+Rebase instead of merge (rewrites history — only on your own branch, and
+only if you understand the consequences; for an unfamiliar onsite repo,
+ask the team which workflow they use):
+git switch fix/payment-posting-duplicate
+git rebase main
+
+
+----------------------------------------
+5. PUSH / PREPARE FOR PR
+----------------------------------------
+
+First push:
+git push -u origin fix/payment-posting-duplicate
+(-u means future pushes can just be `git push`)
+
+Before pushing, check:
+git status
+git diff main...HEAD
+git log main..HEAD --oneline
+-> only intended files changed; no .env/tokens/customer data/debug output;
+   tests pass.
+
+PR description shape:
+  Problem:    Retries could post the same payment twice.
+  Root cause: The write path retried after timeout without checking
+              whether the posting had already succeeded.
+  Change:     Added an idempotency key and status check before retry.
+  Validation: Added regression tests for timeout+retry and duplicate
+              request.
+  Risk:       Existing first-time payment posting path unchanged.
+
+Avoid: git push --force
+If force is genuinely necessary and team policy allows it:
+git push --force-with-lease   (refuses to overwrite remote work you
+                                didn't know about)

@@ -1,0 +1,96 @@
+GIT — WHEN TO USE WHAT
+
+Think of Git as four different jobs:
+
+1. INSPECT
+   Use when you first open a repo or before doing anything risky.
+   git status
+   git branch --show-current
+   git log --oneline -5
+   git diff
+
+2. ISOLATE YOUR WORK
+   Use when starting a new bug fix, feature, or experiment.
+   git switch -c fix/payment-posting-duplicate
+
+3. SAVE A CHECKPOINT
+   Use after one coherent piece of work is working.
+   git add src/payment_posting.py tests/test_payment_posting.py
+   git commit -m "Fix duplicate payment posting retry"
+
+4. SHARE / INTEGRATE
+   Use when your work is ready for teammates.
+   git push -u origin fix/payment-posting-duplicate
+
+
+----------------------------------------
+FIRST 2 MINUTES IN AN UNFAMILIAR REPO
+----------------------------------------
+
+Run:
+git status
+git branch --show-current
+git log --oneline -5
+git remote -v
+
+What you are checking:
+git status        -> are there uncommitted changes, and are they yours?
+git branch --show-current -> are you on main, or already on someone else's branch?
+git log --oneline -5      -> what changed recently; does the repo look active/normal?
+git remote -v             -> where would a push go?
+
+
+----------------------------------------
+SAFE DEFAULT WORKFLOW
+----------------------------------------
+
+Scenario: you need to fix duplicate payment posting.
+
+1. git status                                                 (inspect)
+2. git switch -c fix/payment-posting-duplicate                (branch)
+3. make changes
+4. git diff                                                    (review)
+5. git add src/payment_posting.py tests/test_payment_posting.py (stage)
+6. git diff --staged                                           (review exactly what will be committed)
+7. git commit -m "Fix duplicate payment posting retry"
+8. git status                                                  (verify clean state)
+9. git push -u origin fix/payment-posting-duplicate
+
+RULE: if you are unsure whether a Git command is destructive, stop and
+inspect first (see 03_conflicts_and_safety.txt).
+
+
+----------------------------------------
+SETTING UP A BRAND-NEW REPO
+----------------------------------------
+
+Check whether a folder is already a Git repo:
+ls -a                           (look for .git)
+git rev-parse --show-toplevel
+
+If it is NOT yet a repo (git status returns "fatal: not a git repository"):
+
+cd /path/to/project
+git init
+git branch -M main
+printf ".DS_Store\n.env\n.venv/\nvenv/\n__pycache__/\n*.pyc\n.ipynb_checkpoints/\n" > .gitignore
+git status
+git add .
+git diff --staged
+git commit -m "Initialize repo"
+
+Then connect to an empty GitHub repo you've already created:
+git remote add origin git@github.com:ORG/REPO.git
+git push -u origin main
+
+If the repo already exists on GitHub, clone it instead of running git init:
+git clone git@github.com:ORG/REPO.git
+cd REPO
+git status
+
+What each command actually does:
+git init            -> creates Git metadata locally
+git add             -> chooses files for the next commit
+git commit          -> saves a local checkpoint
+git remote add origin -> connects the local repo to GitHub
+git push            -> uploads commits to GitHub

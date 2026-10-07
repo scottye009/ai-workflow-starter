@@ -1,10 +1,14 @@
 R-P-I-V-R-D
 Read -> Plan -> Implement -> Verify -> Review -> Deliver
 
-REPO: [REPO_PATH]
-GOAL: [GOAL]
-QUESTION / TASK: [QUESTION]
-CONSTRAINTS: [CONSTRAINTS]
+REPO / SYSTEM: [REPO_OR_SYSTEM]   e.g., the PDAC agentic curation pipeline (pipeline/graph.py, nodes.py, state.py)
+GOAL: [GOAL]                      e.g., Make run_pipeline.py skip a patient whose thread_id is already checkpointed as finished
+QUESTION / TASK: [QUESTION]       e.g., Why did --limit 20 re-run the 10 patients already completed under --limit 10?
+CONSTRAINTS: [CONSTRAINTS]        e.g., no changes to the checkpoints.sqlite schema; must keep working with SqliteSaver
+
+Use this as the default loop for anything beyond a trivial change. Each
+stage below maps to a specific habit an interviewer or reviewer is
+checking for, not just a step to complete.
 
 READ
 Inspect the repository and relevant files first. Do not modify anything yet.
@@ -57,3 +61,8 @@ Return:
 3. How you verified it
 4. Remaining risks / unknowns
 5. Recommended next step
+
+Strong framing to use out loud:
+"Before I change anything, I want to understand the expected workflow,
+reproduce the discrepancy, identify the source of truth, and define how
+we will know the fix worked."

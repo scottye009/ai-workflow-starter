@@ -1,0 +1,57 @@
+MERGE CONFLICTS AND HIGH-RISK COMMANDS
+
+----------------------------------------
+MERGE CONFLICTS — practical workflow
+----------------------------------------
+
+Happens when two branches changed overlapping lines.
+
+git merge main
+  -> CONFLICT (content): Merge conflict in src/claim_router.py
+
+Inspect: git status, then open the file:
+<<<<<<< HEAD
+route = classify_claim(claim)
+=======
+route = route_claim_by_payer(claim)
+>>>>>>> main
+
+Resolve by deciding what the final code should actually be, then remove
+the <<<<<<< ======= >>>>>>> markers.
+
+Mark resolved: git add src/claim_router.py
+Verify: run the relevant test, then git diff --staged
+Finish: git commit
+
+Not ready to resolve yet? git merge --abort (or git rebase --abort for a
+rebase).
+
+Important: do not resolve conflicts by blindly choosing "ours" or
+"theirs" — understand the intended behavior first.
+
+
+----------------------------------------
+COMMANDS TO TREAT AS HIGH-RISK
+----------------------------------------
+
+Memorize that these require caution, not that they're normal tools.
+
+git reset --hard HEAD~1   -> can destroy uncommitted work
+git clean -fd             -> deletes untracked files/dirs (debug scripts,
+                             local datasets, generated outputs)
+git push --force          -> can overwrite remote branch history
+git branch -D             -> force-deletes an unmerged branch
+git restore .             -> can discard unstaged changes across many
+                             files at once
+
+Safe habit before any risky command:
+git status
+git diff
+git branch --show-current
+
+Then preserve work if there's any doubt:
+git stash -u
+  or
+git add -A && git commit -m "WIP checkpoint before history change"
+
+If still unsure: do not run the destructive command.

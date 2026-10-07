@@ -1,0 +1,46 @@
+MINIMAL FIX > IMPRESSIVE ARCHITECTURE, THEN SELF-REVIEW
+
+CONFIRMED ROOT CAUSE: [ROOT_CAUSE]
+e.g., qa_node only checks `errors`, so a NAT=Y patient with pre_nat_ct=miss is never flagged
+ALLOWED PATHS: [ALLOWED_PATHS]
+e.g., pipeline/nodes.py, pipeline/state.py
+DO NOT CHANGE: [DO_NOT_CHANGE]
+e.g., resource/.env, 10_whipple_agent (cohort bootstrap), checkpoints.sqlite schema
+
+Guidance for picking the right size of fix:
+
+Situation                              | Prefer                            | Avoid
+--------------------------------------- | ---------------------------------- | ---------------------------------
+A renamed/changed input field           | Schema alias/mapping + validation  | Rebuilding the ingestion layer
+One rule/segment is misconfigured       | Targeted config/mapping fix + test | A generalized rule engine/router
+Model output is occasionally uncertain  | Explicit uncertain state + review   | Forcing a confident binary answer
+A side effect repeats after a timeout   | Idempotency / status check         | A blind retry loop
+A one-off operational report is needed  | A script against existing data     | Standing up a new service
+
+PROMPT — IMPLEMENT
+
+Implement only the confirmed minimal fix (e.g., add a missing-pre-NAT-CT
+check to qa_node's existing status logic). Do not perform unrelated
+refactors or add dependencies. If the fix requires expanding scope, stop
+and explain why first.
+
+Add or update the smallest regression test that would have caught this
+issue (e.g., a case built from patient DF342952029389's known state).
+
+PROMPT — SELF-REVIEW
+
+Before calling it done, review your own change as if it were someone
+else's PR. Do not edit further unless asked. Check:
+- correctness and whether it satisfies [ROOT_CAUSE]'s actual fix
+- boundary / edge cases (e.g., NAT=Y with BOTH CTs missing, not just one)
+- null / malformed input handling
+- permissions, privacy, and PHI exposure (patdurablekey, mrn in logs)
+- duplicate or non-idempotent side effects
+- unnecessary scope (files touched that shouldn't be)
+- missing tests
+
+Classify each finding as: Blocking, High priority, Improvement, or Test
+gap.
+
+Then report: changed files, validation actually executed, remaining
+risk, and rollback.

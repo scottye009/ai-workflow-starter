@@ -1,0 +1,48 @@
+DATA / CSV / EXCEL / JSON INVESTIGATION
+
+DATA PATH: [DATA_PATH]
+e.g., 10_whipple_agent/data/0d2_PATH-RAD-484.xlsx
+GOAL: [GOAL]
+e.g., Confirm the 484-patient roster has no duplicate patdurablekeys before it feeds the per-patient graph
+OUTPUT PATH: [OUTPUT_PATH]
+e.g., 33_results/00_headline_metrics.csv
+
+Data boundaries are where most implementations actually fail: mappings,
+missing values, date formats, identifiers, or an unexpected schema
+change. Treat this as high-value, not a lesser task than "real"
+engineering work.
+
+Safe data-processing defaults:
+- Keep the raw input read-only.
+- Write outputs to a new location; never overwrite the input by default.
+- Log file-level failures and continue when safe to do so.
+- Report row counts before/after, missingness, duplicates, mapping
+  failures, and invalid values.
+- Keep source lineage so a transformed record can be traced back to its
+  input (e.g., patdurablekey all the way through to the final CSV row).
+- Add a dry-run / preview mode before writing consequential outputs.
+- Make transformation rules explicit and rerunnable.
+
+Onboarding questions to ask before transforming anything:
+- What is the canonical identifier for each key entity? e.g.,
+  patdurablekey for the patient, accession for a report
+- Are codes, statuses, dates, and amounts normalized, or
+  source-system-specific? e.g., is the de-identification date-shift
+  already corrected, or does this field still need `real = ic_date -
+  Date_Diff`?
+- Which fields are required versus optional?
+- What should happen to an invalid row: reject, quarantine, default, or
+  route to review?
+- How do we reconcile row counts and totals after transformation? e.g.,
+  10 patients in, 10 patients out of the Overview tab, with Radiology
+  rows = number of CTs found (1 or 2 per patient)
+- What downstream workflow consumes this data, and what happens if a
+  field is wrong?
+
+PROMPT
+
+Before transforming anything, inspect the data and report: files/
+tables/sheets present, row counts, columns and inferred types, key
+identifiers, missingness, duplicates, unexpected values/distributions,
+and candidate source-of-truth fields. Then propose the smallest
+transformation, applying the safe defaults above.

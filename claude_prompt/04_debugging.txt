@@ -1,0 +1,52 @@
+DEBUGGING — BUILD AN EVIDENCE CHAIN BEFORE FIXING
+
+PROBLEM: [SYMPTOM]
+e.g., Patient DF342952029389 is NAT=Y but came back pre_nat_ct=miss with no needs_review flag
+EXPECTED: [EXPECTED_BEHAVIOR]
+e.g., a NAT=Y patient missing a pre-NAT CT should be flagged needs_review, not ok
+ACTUAL: [ACTUAL_BEHAVIOR]
+e.g., qa_node only checks whether errors is non-empty, so the missing-CT case passes through as ok
+REPRODUCTION: [STEPS / RECORD / COMMAND]
+e.g., python3 run_pipeline.py --patient-keys DF342952029389
+EVIDENCE: [LOGS, FILE PATHS, SAMPLE ROWS]
+e.g., cohort_results_{run_id}.jsonl row for DF342952029389; pipeline/nodes.py::qa_node
+
+Do not modify anything yet.
+
+Work through, in order:
+1. Reproduce — can the failure be shown consistently on a specific example?
+2. Expected vs. actual — state both precisely.
+3. Localize — data -> mapping/config -> business rule -> model ->
+   tool/API -> external system?
+4. Compare — what differs between a working case and a failing case?
+   e.g., DAE4D28B53592E (NAT=N, correctly ok) vs. DF342952029389 (NAT=Y,
+   pre_nat_ct=miss, incorrectly ok) — rank the differences by evidence,
+   not by which node happens to run last.
+5. Root cause — what upstream condition explains the downstream symptom?
+6. Scope — one record, one segment, one release, or systemic?
+   e.g., does this affect every NAT=Y patient with any missing CT, or
+   only ones missing both pre-surgery and pre-NAT?
+7. Mitigate — can the user be safely unblocked before the permanent fix?
+8. Fix + prevent — smallest correction plus a regression check/monitor.
+
+Keep every claim sorted while you work:
+  Confirmed fact  -> directly observed (cite the file/row)
+  Hypothesis      -> plausible, not yet confirmed
+  Unknown         -> material question with no evidence either way
+  Next evidence   -> smallest check that would confirm/reject the leading
+                     hypothesis
+Say out loud: "What I know so far is X. My leading hypothesis is Y, but I
+don't have evidence for that yet. I want to check Z before changing the
+workflow."
+
+Return:
+1. Direct cause vs. root-cause hypothesis
+2. Evidence supporting each claim
+3. Competing hypotheses
+4. The smallest next experiment
+5. Minimal fix, if confirmed
+6. Regression test
+7. Risks and unknowns
+
+Do not hide an upstream issue (a real data gap, like a missing CT) with a
+downstream patch unless that is clearly the correct design.

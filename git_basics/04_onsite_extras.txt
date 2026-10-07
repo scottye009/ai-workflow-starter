@@ -1,0 +1,48 @@
+ONSITE EXTRAS — WORKTREES AND THE PRE-PR CHECKLIST
+
+----------------------------------------
+WORKTREE — a clean copy without disturbing current work
+----------------------------------------
+
+Useful when the current repo has uncommitted changes, you need a clean
+branch for a separate onsite task, or you want two branches open at once.
+
+Scenario: working on feature/payer-policy-monitor, but need a clean
+workspace for fix/payment-posting-duplicate.
+
+git worktree add ../payment-debug -b fix/payment-posting-duplicate
+cd ../payment-debug
+
+git worktree list              (see all worktrees)
+git worktree remove ../payment-debug   (remove when finished)
+
+Why this is nice for an AI coding tool: you can point it at a clean
+worktree without risking unrelated changes in your primary workspace.
+
+
+----------------------------------------
+PRE-PR / HANDOFF CHECKLIST
+----------------------------------------
+
+Scenario branch: fix/payment-posting-duplicate
+
+1. git branch --show-current           (verify current branch)
+2. git status                          (check workspace)
+3. git diff main...HEAD                (see total branch diff)
+4. git log main..HEAD --oneline        (see commits)
+5. Run the relevant tests, e.g. pytest tests/test_payment_posting.py
+6. git status --short                  (check for accidentally staged
+                                         sensitive files: .env,
+                                         credentials.json, customer_
+                                         data.csv, patient_data.csv,
+                                         debug_output.json)
+7. git show --stat HEAD / git show HEAD  (review final commit content)
+8. git push
+
+Handoff summary shape:
+  Problem:        Duplicate posting could occur after timeout retry.
+  Root cause:      Retry path did not verify prior external success.
+  Change:          Added an idempotency check.
+  Validation:      Regression test covers timeout + retry.
+  Remaining risk:  External payer API behavior still mocked in test
+                   environment.

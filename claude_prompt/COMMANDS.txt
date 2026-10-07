@@ -1,0 +1,84 @@
+CLAUDE CODE — COMMON /COMMANDS, AND THE GIT SAFETY ROUTINE
+
+/init             Generate or refresh this repo's CLAUDE.md so every
+                  future session already knows the project's structure,
+                  commands, conventions, and forbidden areas. Run after
+                  any significant reorg so the documented structure
+                  doesn't drift from the real one.
+
+/clear            Wipe conversation history. Use between unrelated tasks
+                  so stale context doesn't bias the next answer.
+
+/compact          Summarize + shrink context instead of wiping it. Use
+                  mid-task, after reading a lot of files but before the
+                  context window is actually full — not mid tool-call
+                  sequence, where it can lose track of what's already
+                  been inspected.
+
+/model            Switch model for the session. Match model strength to
+                  task: cheap/mechanical steps (renaming files, filling
+                  in a template) vs. steps that need careful reasoning
+                  (root-causing a bug, designing a policy change).
+
+/resume           Pick back up a previous session by name/ID instead of
+                  re-explaining context from scratch.
+
+/review           Review a diff or PR before it goes out — especially
+                  useful for mechanical, multi-file changes where a
+                  missed call site is easy to overlook by eye.
+
+/pr-comments      Pull existing review comments on a GitHub PR straight
+                  into context instead of copy-pasting them.
+
+/permissions      Check or edit what Claude is allowed to run without
+                  asking first (e.g. read-only queries vs. anything that
+                  writes to a database or production system).
+
+/cost             Check token/cost usage for the session — worth a glance
+                  before a large batch operation that will involve a lot
+                  of back-and-forth.
+
+/agents           Manage custom subagents, for a task that genuinely
+                  splits into independent, parallel pieces of work.
+
+/mcp              Manage MCP server connections, for wiring the agent
+                  into an external tool/data source with least-privilege,
+                  read-only access by default.
+
+/doctor           Diagnose a broken Claude Code install/config — rule
+                  this out before assuming a tool-use failure is a bug in
+                  the project itself.
+
+GIT SAFETY ROUTINE (know this; don't need every advanced command)
+
+  git status
+  git branch --show-current
+  git diff
+  git log --oneline -5
+
+- Use a dedicated branch if the environment expects you to make changes.
+- Do not casually reset, rebase, push, or modify main/master.
+- Before handoff, inspect git diff and confirm only the intended files
+  changed.
+- If the working tree already has changes when you start, distinguish
+  pre-existing work from your own changes before editing anything.
+
+Notes:
+- Prefer /clear over starting a brand-new terminal session — it's faster
+  and keeps your working directory/history.
+- A command is not a substitute for the git safety routine above — run
+  both.
+
+SAFETY QUICK CHECK (a "don't do X" instruction is not an access control)
+
+- PHI / PII / financial data: use only what's explicitly authorized;
+  prefer synthetic or de-identified examples when possible.
+- Credentials / .env: never expose, log, or commit them.
+- Production writes / irreversible actions: pause and get explicit
+  approval + a rollback path before running them.
+- An AI-generated shell command: understand it before approving it —
+  don't execute unfamiliar copy-pasted commands blindly.
+- If the AI edited unrelated files, claimed tests passed without
+  evidence, invented a function/API, or proposes a big refactor for a
+  small confirmed issue: stop, ask for evidence, and return to
+  05_minimal_fix.txt.

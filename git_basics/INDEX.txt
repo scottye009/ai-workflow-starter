@@ -1,27 +1,14 @@
 GIT BASICS — PRACTICAL GUIDE
 
-FIRST TIME SETUP:
-0_setup_new_repo.txt    Turn a normal folder into a Git repo + connect GitHub
-0_start_here.txt        Mental model + safe daily workflow
-
-COMMON WORKFLOW:
-1_status_diff.txt       Inspect current state
-2_branch.txt            Branch basics
-3_stage_commit.txt      Stage / commit
-4_sync.txt              Fetch / pull / update
-5_push_pr.txt           Push + PR prep
-
-WHEN SOMETHING GOES WRONG:
-6_undo.txt              Undo common mistakes
-7_stash.txt             Temporarily save unfinished work
-8_conflicts.txt         Merge conflict workflow
-9_history.txt           Inspect history
-10_reflog_recovery.txt  Recover lost local commits
-
-USEFUL FOR ONSITE / PARALLEL WORK:
-11_worktree.txt         Clean isolated workspace
-12_pre_pr_checklist.txt Final review
-13_dangerous_commands.txt Commands requiring caution
+00_start_here.txt            Mental model, first 2 minutes in an
+                              unfamiliar repo, safe default workflow, and
+                              setting up a brand-new repo
+01_daily_workflow.txt        Status/diff -> branch -> stage/commit ->
+                              sync with main -> push/PR
+02_undo_and_recovery.txt     Undo, stash, history, and reflog recovery
+03_conflicts_and_safety.txt  Merge conflicts and high-risk commands
+04_onsite_extras.txt         Worktrees for parallel work + the pre-PR /
+                              handoff checklist
 
 
 ==================================================
@@ -40,7 +27,7 @@ git branch -M main
 git status
 
 Then follow:
-0_setup_new_repo.txt
+00_start_here.txt
 
 
 ==================================================

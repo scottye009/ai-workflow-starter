@@ -1,0 +1,41 @@
+DIRECT ACTION — WHEN YOU ALREADY KNOW WHAT YOU WANT DONE
+
+Use this instead of 00_RPIVRD.txt when all three are true:
+- the task is well-scoped (you already know the input, the rule, and the
+  output — you are not debugging or investigating anything)
+- it is low-risk / reversible (reads, a new output file, a local script —
+  not a production write)
+- it does not require exploring an unfamiliar system first
+
+If any of those is false, use 00_RPIVRD.txt (or 02_orientation.txt /
+04_debugging.txt) instead — this template deliberately skips Plan/Review
+ceremony that those exist to force.
+
+THE THREE THINGS TO SPECIFY (nothing more)
+
+INPUT: [INPUT]
+e.g., 20_nat_date_agent/data/cohort_2026-08-24.csv
+ACTION / RULE: [ACTION]
+e.g., filter to rows where nat_status == "Y" and pre_nat_ct is missing
+OUTPUT: [OUTPUT]
+e.g., a new CSV in the same folder; do not modify the source file
+
+PROMPT
+
+In [INPUT], [ACTION]. Write the result to [OUTPUT]. Tell me the row
+count before and after.
+
+Full example:
+"In 20_nat_date_agent/data/cohort_2026-08-24.csv, filter to rows where
+nat_status is Y and pre_nat_ct is missing. Write the result to a new CSV
+in the same folder, and tell me the row count before and after."
+
+What happens next: this is implemented directly in the same turn — no
+separate "Implement" step to invoke. If the request turns out to be
+ambiguous or riskier than expected (the file has no nat_status column,
+the output path would overwrite something), expect to get a clarifying
+question back before anything is written, not a guess.
+
+Still worth a one-line sanity check afterward: does the before/after row
+count make sense, and did only the intended output file change
+(git status / ls the output path)?

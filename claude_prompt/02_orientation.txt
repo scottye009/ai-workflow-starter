@@ -1,0 +1,27 @@
+READ-ONLY ORIENTATION — FIRST 15 MINUTES IN AN UNFAMILIAR SYSTEM
+
+Before writing this prompt, restate the problem in one sentence: who is
+affected, what outcome is expected, and what is currently failing.
+
+TASK / PROBLEM: [PROBLEM]   e.g., Understand how a patient flows through nat_status -> ct_retrieval -> radiology/pathology extraction -> qa before touching qa_node
+
+PROMPT
+
+Do not modify files yet. Help me orient to this repository/workflow for
+the task above.
+
+Please identify:
+1. the likely entry point and the 5-10 most relevant files
+2. the current data/control flow
+3. existing tests or similar implementations
+4. configuration or external dependencies that may affect behavior
+5. high-risk files or side effects
+6. facts confirmed from the repo (cite file paths)
+7. hypotheses that are not yet confirmed
+8. the 3 most important questions to ask before changing anything
+
+Cite file paths for every factual claim. Do not edit or install anything.
+
+Only after this orientation pass should a change be proposed. Spending
+too long reading everything is also a failure mode — the goal is the
+narrowest path that explains the behavior, not full coverage.

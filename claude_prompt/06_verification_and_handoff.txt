@@ -1,0 +1,48 @@
+VERIFICATION, THEN HANDOFF
+
+"It ran" is not "it worked." Verify both the technical behavior and the
+operational outcome before writing the handoff.
+
+Minimum verification stack:
+- Run the narrowest relevant test first, then broaden only if useful.
+  e.g., re-run just patient DF342952029389, then a small batch (--limit 20)
+- Confirm the intended path and at least one meaningful edge case.
+  e.g., a NAT=N patient (should stay ok) and a NAT=Y/both-CTs-missing case
+- Check that no unrelated files or behavior changed.
+- If there is an external side effect, verify the external system's
+  actual state (e.g., query checkpoints.sqlite directly) rather than
+  trusting a successful return value.
+- Explicitly mark anything not tested or not observable.
+- If the fix changes business behavior, explain the new behavior in
+  plain language.
+
+VERIFICATION REPORT TEMPLATE
+
+Check                  | Command / Method                        | Actually executed? | Result | Evidence | Remaining risk
+---------------------- | ----------------------------------------- | ------------------- | ------ | -------- | --------------
+Targeted test          | --patient-keys DF342952029389             | Yes/No              |        |          |
+Edge case              | --patient-keys DAE4D28B53592E              | Yes/No              |        |          |
+Manual workflow check  | review 33_results/00_headline_metrics.csv | Yes/No              |        |          |
+Regression check       | pytest tests/...                          | Yes/No              |        |          |
+
+Never state that tests passed without having run them. State exactly
+what was run, what was not run, and why.
+
+PROMPT — HANDOFF
+
+TASK: [GOAL]                                e.g., add a real QA policy for missing pre-NAT CTs
+AUDIENCE: [CUSTOMER / OPS / ENGINEERING / MIXED]   e.g., ENGINEERING (PI + research coordinator)
+
+Write a concise handoff. Include:
+- what was observed
+- root cause (or current leading hypothesis, clearly labeled as such)
+- what changed
+- how it was verified
+- operational impact (e.g., how many previously-ok patients now flag
+  needs_review)
+- remaining limitations
+- next action and owner
+
+Separate confirmed facts from hypotheses. Use plain language appropriate
+for [AUDIENCE] — avoid implementation jargon unless it changes the
+decision the audience needs to make.

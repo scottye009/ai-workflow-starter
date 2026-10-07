@@ -1,0 +1,26 @@
+TURN AN AMBIGUOUS REQUEST INTO A WORKABLE TASK
+
+REQUEST AS RECEIVED: [REQUEST]
+e.g., "The PI wants a real QA policy instead of the needs_review-if-errors-else-ok stub in qa_node"
+
+PROMPT
+
+I do not want to code yet. Help me turn this into a clear work item.
+
+Ask the smallest set of high-value questions needed to clarify:
+- who uses this workflow                  e.g., the research coordinator reviewing flagged patients
+- current workflow and pain point         e.g., qa_node currently never flags a missing pre-NAT CT
+- input and expected output                e.g., a PatientState -> a terminal status (ok/needs_review/error)
+- source of truth                          e.g., 20_nat_date_agent's NAT ground-truth columns
+- success criteria                         e.g., known gap case DF342952029389 should come back needs_review
+- edge cases / failure modes               e.g., NAT=Y with both CTs missing, not just one
+- permissions, privacy, and side effects   e.g., no PHI (patdurablekey, mrn) in logs
+- what is explicitly out of scope          e.g., not touching 10_whipple_agent's cohort bootstrap
+
+After I answer, summarize: Background, Goal, Scope, Constraints,
+Acceptance Criteria, Verification, and Open Questions.
+
+Use this before any task that arrives as a vague ask ("the numbers look
+wrong," "this patient's status looks off"). A clarifying question that
+changes the scope of the fix is worth more than an elegant prompt applied
+to the wrong problem.

@@ -1,29 +1,41 @@
 CLAUDE PROMPT PACK
 
-0_RPIVRD.txt              Full Read -> Plan -> Implement -> Verify -> Review -> Deliver
-1_read.txt                Unfamiliar repo orientation
-2_plan.txt                Turn vague task into executable plan
-3_debug.txt               Bug / discrepancy debugging
-4_compare_cases.txt       Compare working vs failing examples
-5_feature.txt             Small feature / change request
-6_data.txt                CSV / Excel / JSON investigation
-7_sql.txt                 SQL / metric mismatch
-8_ai_workflow.txt         AI / LLM workflow design
-9_prompt.txt              Prompt + structured output
-10_agent_debug.txt        Agent / workflow trace debugging
-11_rag.txt                RAG debugging
-12_eval.txt               Evaluation design
-13_customer_discovery.txt Customer workflow discovery
-14_numbers_mismatch.txt   Customer says numbers do not match
-15_ai_is_wrong.txt        Customer says AI is wrong
-16_product_requirement.txt Turn customer feedback into product requirement
-17_safe_write.txt         Side-effecting / high-risk action
-18_review.txt             Code review
-19_tests.txt              Test / regression case generation
-20_prototype.txt          Fast prototype
-21_handoff.txt            Final handoff / status update
-22_onsite_10min.txt       Fast onsite starter
+Each template has a generic [BRACKET] to fill in, plus an "e.g." line
+showing it filled in against the UCSF PDAC agentic curation pipeline
+(/Users/yesc/Desktop/LLM_Pdac/4_pdac-agentic-curation-prod) — adapt the
+brackets, swap the examples for whatever system you're actually in.
 
-Most useful onsite:
-0 -> 1 -> 2 -> 3/6/7/10 -> 18 -> 21
-Use 22 when time is tight.
+00_RPIVRD.txt                     Standalone full workflow: Read -> Plan
+                                   -> Implement -> Verify -> Review ->
+                                   Deliver. Use for anything ambiguous,
+                                   risky, or multi-step.
+01_direct_action.txt              Skip the ceremony — you already know
+                                   the input/rule/output (e.g. "filter
+                                   this CSV and write a new file").
+                                   Start here for most day-to-day asks.
+02_orientation.txt                First 15 minutes in an unfamiliar
+                                   system (read-only)
+03_ambiguous_task_to_work_item.txt Turn a vague request into a scoped
+                                   work item (includes the questions to
+                                   ask)
+04_debugging.txt                  Evidence chain: reproduce -> localize
+                                   -> compare working vs. failing ->
+                                   root cause (includes fact/hypothesis/
+                                   unknown framing)
+05_minimal_fix.txt                Implement the smallest confirmed fix,
+                                   then self-review it like a teammate's PR
+06_verification_and_handoff.txt   Prove it actually works, then write the
+                                   handoff
+07_data_investigation.txt         CSV / Excel / JSON investigation before
+                                   transforming unfamiliar data
+
+COMMANDS.txt                      Common Claude Code /commands, the git
+                                   safety routine, and a safety quick check
+
+Which one do I actually need?
+- Know exactly what you want done, low risk?    -> 01
+- New/unfamiliar system or data?                -> 02 or 07
+- Request is vague ("the numbers look wrong")?  -> 03
+- Something is broken and you don't know why?    -> 04
+- Fix is confirmed, ready to write it?           -> 05 -> 06
+- Everything else / high-stakes / multi-step?    -> 00

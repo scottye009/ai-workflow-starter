@@ -1,0 +1,89 @@
+UNDO, STASH, HISTORY, AND RECOVERY
+
+----------------------------------------
+UNDO — choose based on what you want to keep
+----------------------------------------
+
+Ask first: do I want to keep the file changes? Do I want to keep the
+commit in history?
+
+Discard unstaged changes in one file (changes are LOST):
+git restore src/router.py
+
+Unstage but keep the file changes (e.g. accidentally staged secrets.env):
+git restore --staged secrets.env
+
+Undo latest commit, keep changes staged:
+git reset --soft HEAD~1
+
+Undo latest commit, keep changes unstaged:
+git reset HEAD~1
+
+Undo a commit that was already shared (creates a NEW commit that
+reverses it — safe for shared history):
+git revert a31bc55
+
+Rule: local/private history -> reset is okay. Already pushed/shared
+history -> prefer revert.
+
+Avoid git reset --hard HEAD~1 unless you intentionally want to destroy
+local changes.
+
+
+----------------------------------------
+STASH — temporarily put work aside
+----------------------------------------
+
+Use when you have unfinished changes and need to switch branches or pull
+cleanly without committing half-finished work.
+
+git stash push -m "WIP payer parser debugging"
+git switch main
+
+git stash list
+  stash@{0}: On debug/policy-parser: WIP payer parser debugging
+
+git stash pop            (reapply + remove the stash entry)
+git stash apply stash@{0}  (reapply + keep the stash entry)
+git stash -u              (also stash untracked files, e.g. scratch
+                           scripts or debug output)
+git stash show -p stash@{0}  (preview without applying)
+
+
+----------------------------------------
+HISTORY — find why code looks like this
+----------------------------------------
+
+Use when debugging a regression, understanding unfamiliar code, or
+finding when behavior changed.
+
+git log --oneline --graph --decorate --all   (compact overview)
+git log -- src/payment_posting.py            (history for one file)
+git show a31bc55                             (show a specific commit)
+git blame src/payment_posting.py             (context for one line —
+                                               not for assigning blame)
+git log -S"needs_review" --oneline           (find when a string was
+                                               added/removed)
+git log -G"idempotency" --oneline            (find diffs matching a
+                                               pattern)
+git diff main...fix/payment-posting-duplicate  (compare branches)
+
+
+----------------------------------------
+REFLOG — recover from local Git mistakes
+----------------------------------------
+
+Use when you accidentally reset, rebased and lost a commit, or a commit
+seems to have disappeared.
+
+Example: you ran `git reset --hard HEAD~1` and need the previous commit.
+
+git reflog
+  a31bc55 HEAD@{0}: reset: moving to HEAD~1
+  b72de90 HEAD@{1}: commit: Fix duplicate payment posting retry
+
+Recover safely by creating a rescue branch at the lost commit:
+git switch -c rescue/payment-fix b72de90
+
+Rule: if something goes wrong, STOP making more history changes and run
+git status, git reflog, git log --oneline --graph --decorate --all.
