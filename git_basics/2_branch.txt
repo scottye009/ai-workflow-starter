@@ -1,0 +1,92 @@
+BRANCHES — ISOLATE ONE TASK
+
+WHEN TO USE:
+Create a branch when starting:
+- a bug fix
+- a feature
+- a customer-specific investigation
+- an experiment you may discard
+
+Do not casually edit main.
+
+
+----------------------------------------
+CREATE A BRANCH
+----------------------------------------
+
+Scenario:
+Fix duplicate payment posting.
+
+git switch -c fix/payment-posting-duplicate
+
+
+Scenario:
+Add payer policy classification.
+
+git switch -c feature/payer-policy-classification
+
+
+Scenario:
+Investigate customer Acme CSV import.
+
+git switch -c debug/acme-csv-import
+
+
+Common naming:
+fix/...
+feature/...
+debug/...
+chore/...
+
+
+----------------------------------------
+SWITCH BRANCHES
+----------------------------------------
+
+git switch main
+
+git switch fix/payment-posting-duplicate
+
+
+----------------------------------------
+LIST BRANCHES
+----------------------------------------
+
+git branch
+
+All branches including remote:
+git branch -a
+
+
+----------------------------------------
+RENAME CURRENT BRANCH
+----------------------------------------
+
+Suppose you started with:
+fix/payment
+
+but want something clearer:
+
+git branch -m fix/payment-posting-duplicate
+
+
+----------------------------------------
+DELETE LOCAL BRANCH AFTER MERGE
+----------------------------------------
+
+git branch -d fix/payment-posting-duplicate
+
+Use after:
+- PR merged
+- you no longer need local branch
+
+
+----------------------------------------
+FORCE DELETE
+----------------------------------------
+
+git branch -D experiment/failed-agent-router
+
+Use only when:
+- branch is intentionally disposable
+- you know unmerged commits can be lost

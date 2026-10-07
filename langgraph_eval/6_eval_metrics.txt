@@ -1,0 +1,30 @@
+CORE EVAL METRICS
+
+Classification:
+Accuracy = (TP + TN) / all
+Precision = TP / (TP + FP)
+Recall/Sensitivity = TP / (TP + FN)
+F1 = harmonic mean of precision and recall
+Specificity = TN / (TN + FP)
+
+Generation:
+- correctness
+- relevance
+- completeness
+- groundedness / faithfulness
+- hallucination rate
+- citation correctness
+- structured-output validity
+
+Operations:
+- task success rate
+- exception rate
+- human escalation rate
+- automation rate
+- retry rate
+- recovery rate
+- duplicate-action rate
+- p50 / p95 latency
+- cost per task
+
+Choose metrics based on the cost of being wrong.

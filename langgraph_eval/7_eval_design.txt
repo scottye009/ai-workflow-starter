@@ -1,0 +1,21 @@
+EVAL DESIGN
+
+1. Define task
+2. Define unacceptable failure
+3. Build representative labeled cases
+4. Include hard/edge cases
+5. Pick metrics tied to business risk
+6. Set release threshold
+7. Run error analysis
+8. Save regression cases
+
+Eval set should include:
+- normal cases
+- rare but important cases
+- malformed/missing data
+- conflicting evidence
+- ambiguous cases
+- historical production failures
+
+Avoid optimizing only to the eval set.
+Keep a holdout when possible.

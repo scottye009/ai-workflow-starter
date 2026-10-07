@@ -1,0 +1,31 @@
+DEBUG AI / AGENT / RAG SYSTEM
+
+REPO: [PATH]
+PROBLEM: [QUESTION]
+EXPECTED: [EXPECTED]
+ACTUAL: [ACTUAL]
+EXAMPLE / TRACE: [PASTE]
+
+Find the first point where expected and actual behavior diverge.
+
+Check in this order:
+1. source data
+2. parsing / preprocessing
+3. retrieval / context
+4. prompt / structured output
+5. model behavior
+6. routing / state
+7. tool selection
+8. tool arguments
+9. tool execution
+10. downstream / external system
+
+Do not assume "AI is wrong" means the model is the root cause.
+
+Return:
+- first divergence point
+- evidence
+- root cause
+- smallest fix
+- regression test
+- anything still unverified

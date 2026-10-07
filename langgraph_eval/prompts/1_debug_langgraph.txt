@@ -1,0 +1,33 @@
+DEBUG LANGGRAPH
+
+REPO: [PATH]
+RUN / THREAD ID: [ID]
+EXPECTED: [EXPECTED]
+ACTUAL: [ACTUAL]
+
+Trace:
+1. initial state
+2. every node entered
+3. state before node
+4. node output
+5. route selected
+6. state after merge/update
+7. next node
+
+Find the FIRST incorrect transition.
+
+Check:
+- missing/overwritten state
+- wrong route
+- stale checkpoint
+- repeated node
+- unexpected retry
+- invalid model/tool output
+- side effect repeated
+- error swallowed
+
+Return:
+root cause
+evidence
+smallest fix
+regression test

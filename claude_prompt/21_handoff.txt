@@ -1,0 +1,17 @@
+FINAL HANDOFF / STATUS UPDATE
+
+TASK: [GOAL]
+AUDIENCE: [CUSTOMER / OPS / ENGINEERING / MIXED]
+
+Write a concise status update containing:
+- what happened
+- impact
+- root cause if confirmed
+- what we changed / did
+- how we verified it
+- current status
+- remaining risk
+- next action and owner
+
+Separate confirmed facts from hypotheses.
+Use plain language appropriate for [AUDIENCE].

@@ -1,0 +1,33 @@
+CUSTOMER SAYS "THE NUMBERS DON'T MATCH"
+
+CUSTOMER REPORT:
+[QUESTION]
+
+KNOWN SYSTEMS / DATA:
+[CONTEXT]
+
+Build an investigation plan.
+
+Clarify:
+- which number
+- expected value
+- observed value
+- time period
+- source system
+- one record vs many
+- when it last worked
+- recent data/config/process changes
+
+Then inspect:
+1. source data
+2. mappings / transformations
+3. filters / joins / aggregations
+4. timing / freshness
+5. model or rule logic
+6. downstream system
+
+Return:
+1. Likely hypotheses
+2. Evidence needed
+3. First checks to run
+4. Customer-safe status update

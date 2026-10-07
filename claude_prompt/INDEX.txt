@@ -1,0 +1,29 @@
+CLAUDE PROMPT PACK
+
+0_RPIVRD.txt              Full Read -> Plan -> Implement -> Verify -> Review -> Deliver
+1_read.txt                Unfamiliar repo orientation
+2_plan.txt                Turn vague task into executable plan
+3_debug.txt               Bug / discrepancy debugging
+4_compare_cases.txt       Compare working vs failing examples
+5_feature.txt             Small feature / change request
+6_data.txt                CSV / Excel / JSON investigation
+7_sql.txt                 SQL / metric mismatch
+8_ai_workflow.txt         AI / LLM workflow design
+9_prompt.txt              Prompt + structured output
+10_agent_debug.txt        Agent / workflow trace debugging
+11_rag.txt                RAG debugging
+12_eval.txt               Evaluation design
+13_customer_discovery.txt Customer workflow discovery
+14_numbers_mismatch.txt   Customer says numbers do not match
+15_ai_is_wrong.txt        Customer says AI is wrong
+16_product_requirement.txt Turn customer feedback into product requirement
+17_safe_write.txt         Side-effecting / high-risk action
+18_review.txt             Code review
+19_tests.txt              Test / regression case generation
+20_prototype.txt          Fast prototype
+21_handoff.txt            Final handoff / status update
+22_onsite_10min.txt       Fast onsite starter
+
+Most useful onsite:
+0 -> 1 -> 2 -> 3/6/7/10 -> 18 -> 21
+Use 22 when time is tight.

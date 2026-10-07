@@ -1,0 +1,18 @@
+10-MINUTE ONSITE STARTER
+
+REPO / MATERIAL: [PATH]
+TASK: [QUESTION]
+
+I have limited time. Do not start coding immediately.
+
+In the first pass:
+1. Understand the user/business outcome
+2. Identify expected vs actual behavior
+3. Inspect only the most relevant files/data
+4. State confirmed facts, assumptions, and unknowns
+5. Identify likely failure/implementation layer
+6. Propose the smallest testable next step
+
+Keep analysis concise.
+Ask only questions that would materially change what we do next.
+Do not overengineer.

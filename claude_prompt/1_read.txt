@@ -1,0 +1,23 @@
+UNFAMILIAR REPO — FAST ORIENTATION
+
+REPO: [REPO_PATH]
+GOAL: [GOAL]
+
+Do a read-only orientation of this repository. Do not edit anything.
+
+Focus only on what is relevant to [GOAL].
+
+Return:
+1. Project purpose
+2. Main entry point(s)
+3. Relevant files and what each does
+4. Data/control flow
+5. How to run the relevant path
+6. How to test it
+7. External services / env vars / dependencies
+8. High-risk or confusing areas
+9. Confirmed facts
+10. Assumptions / unknowns
+11. Smallest recommended next step
+
+Do not summarize unrelated parts of the repo.

@@ -1,0 +1,28 @@
+BUILD A LANGGRAPH WORKFLOW
+
+REPO: [PATH]
+GOAL: [GOAL]
+INPUT: [INPUT]
+OUTPUT: [OUTPUT]
+
+Inspect the current workflow first.
+
+Decide whether LangGraph adds real value.
+If plain Python is simpler, say so.
+
+If LangGraph is appropriate, define:
+1. State schema
+2. Nodes
+3. Deterministic edges
+4. Conditional routes
+5. Retry/loop behavior
+6. Error state
+7. Human-review state
+8. Checkpoint strategy
+9. Thread ID
+10. Completion criteria
+
+Keep each node single-purpose.
+Keep deterministic rules deterministic.
+Do not hide side effects inside generic nodes.
+Then propose the smallest graph.

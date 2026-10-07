@@ -1,0 +1,21 @@
+BUILD AN EVAL
+
+SYSTEM: [GOAL]
+DATA: [EVAL_DATA]
+BUSINESS RISK: [BUSINESS_RISK]
+
+Define:
+1. unit of evaluation
+2. ground truth
+3. error types
+4. false-positive cost
+5. false-negative cost
+6. component metrics
+7. end-to-end metric
+8. release threshold
+9. error-analysis categories
+10. regression set
+
+Use only metrics that matter.
+Do not report accuracy alone when classes are imbalanced or error costs differ.
+Include representative edge cases.

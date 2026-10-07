@@ -1,0 +1,35 @@
+BUILD / EXTEND MINIMAL RAG
+
+REPO: [PATH]
+DATA / DOCUMENTS: [DATA_PATH]
+QUESTION TYPE: [QUESTION_TYPE]
+GOAL: [GOAL]
+
+Inspect 2_rag_minimal.py and the existing project first.
+Do not code yet.
+
+Design the smallest RAG system that satisfies [GOAL].
+
+Separate:
+1. ingestion
+2. parsing
+3. chunking
+4. metadata
+5. indexing
+6. retrieval
+7. optional reranking
+8. grounded generation
+9. citations
+10. evaluation
+
+Start simple.
+Do not add a vector database unless dataset size, persistence, filtering, or latency actually requires it.
+
+For evaluation, create examples that test:
+- relevant evidence retrieved
+- irrelevant evidence rejected
+- insufficient evidence handled correctly
+- conflicting evidence
+- citation / grounding correctness
+
+Then propose the minimal file changes and validation plan.

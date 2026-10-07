@@ -1,0 +1,30 @@
+VAGUE TASK -> EXECUTABLE PLAN
+
+REPO: [REPO_PATH]
+REQUEST: [QUESTION]
+
+Do not code yet.
+
+Turn this request into an executable task.
+
+Clarify only what materially affects implementation:
+- who uses this
+- current workflow
+- expected outcome
+- actual pain point
+- inputs / outputs
+- source of truth
+- business rules
+- edge cases
+- constraints
+- success criteria
+- validation method
+
+Return:
+1. Problem statement
+2. Current understanding
+3. Assumptions
+4. Open questions
+5. Proposed scope
+6. Acceptance criteria
+7. Minimal implementation plan

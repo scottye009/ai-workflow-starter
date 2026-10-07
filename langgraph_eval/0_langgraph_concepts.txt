@@ -1,0 +1,24 @@
+LANGGRAPH — CORE MENTAL MODEL
+
+LangGraph is useful when:
+- you have explicit state
+- multiple known stages
+- conditional branches
+- loops / retries
+- checkpoint/resume
+- human review
+- long-running workflows
+
+Core pieces:
+STATE = shared workflow data
+NODE = one step that reads state and returns updates
+EDGE = deterministic transition
+CONDITIONAL EDGE = routing decision
+CHECKPOINTER = persistence / resume
+THREAD_ID = identity of one workflow execution
+
+Default design:
+START -> validate -> process -> QA -> END
+
+Use plain Python if the workflow is simple.
+Use LangGraph when explicit workflow structure gives real value.

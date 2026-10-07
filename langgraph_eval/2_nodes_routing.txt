@@ -1,0 +1,24 @@
+NODES / ROUTING
+
+A node should have one clear responsibility.
+
+Good:
+validate_input
+retrieve_policy
+classify_denial
+check_business_rules
+qa_result
+
+Bad:
+do_everything
+
+Routing should usually be deterministic when the rule is deterministic.
+
+Example:
+if state["confidence"] < 0.8:
+    return "human_review"
+return "complete"
+
+Use model-driven routing only when the branch itself requires interpretation.
+
+Keep side effects in clearly named nodes.

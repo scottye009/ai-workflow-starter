@@ -1,0 +1,21 @@
+OBSERVABILITY
+
+Track:
+- run/thread ID
+- node entered/exited
+- latency per node
+- tool/model called
+- token/cost
+- status
+- error category
+- retry count
+- escalation
+- final outcome
+
+For sensitive workflows:
+- avoid logging raw PHI/secrets by default
+- log IDs / redacted metadata when enough
+- control trace retention
+
+Useful debugging question:
+At what exact step did actual state first diverge from expected state?

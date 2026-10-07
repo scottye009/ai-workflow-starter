@@ -1,0 +1,93 @@
+STAGING + COMMITTING
+
+Git lets you choose exactly which changes belong in a commit.
+
+WHEN TO USE:
+After one coherent piece of work is complete.
+
+
+----------------------------------------
+STAGE SPECIFIC FILES
+----------------------------------------
+
+Scenario:
+You changed implementation + test.
+
+git add src/payment_posting.py tests/test_payment_posting.py
+
+
+Do NOT automatically use:
+git add .
+
+unless you have checked all changed files.
+
+
+----------------------------------------
+STAGE PART OF A FILE
+----------------------------------------
+
+Scenario:
+src/payment_posting.py contains:
+- real bug fix
+- temporary debug print
+
+Use:
+git add -p src/payment_posting.py
+
+Git shows each chunk and asks whether to stage it.
+
+Useful when one file contains unrelated changes.
+
+
+----------------------------------------
+UNSTAGE A FILE
+----------------------------------------
+
+Suppose you accidentally staged customer_data.csv:
+
+git restore --staged customer_data.csv
+
+The file remains on disk.
+It is just removed from the next commit.
+
+
+----------------------------------------
+REVIEW BEFORE COMMIT
+----------------------------------------
+
+git diff --staged
+
+You should be able to explain every line.
+
+
+----------------------------------------
+COMMIT
+----------------------------------------
+
+Example:
+git commit -m "Fix duplicate payment posting retry"
+
+Good commit messages:
+Fix null payer mapping in claim import
+Add validation for missing authorization ID
+Add regression test for duplicate remittance posting
+Refactor policy parser without behavior change
+
+Bad:
+update
+fix stuff
+changes
+final
+
+
+----------------------------------------
+AMEND MOST RECENT COMMIT
+----------------------------------------
+
+Scenario:
+You forgot one test file before pushing.
+
+git add tests/test_payment_posting.py
+git commit --amend
+
+Use carefully if the commit has already been shared.

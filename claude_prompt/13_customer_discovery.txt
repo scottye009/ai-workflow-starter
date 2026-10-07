@@ -1,0 +1,25 @@
+CUSTOMER WORKFLOW DISCOVERY
+
+CUSTOMER / WORKFLOW: [CUSTOMER_OR_WORKFLOW]
+GOAL: [GOAL]
+WHAT I ALREADY KNOW: [KNOWN_CONTEXT]
+
+Help me prepare for a customer workflow discussion.
+
+Give me the smallest high-value set of questions needed to understand:
+- business outcome
+- current process
+- people / roles
+- systems
+- inputs / outputs
+- source of truth
+- decision rules
+- manual workarounds
+- common exceptions
+- failure impact
+- volume / frequency
+- desired future state
+- success metrics
+
+Prioritize questions that change implementation.
+Avoid generic discovery questions.

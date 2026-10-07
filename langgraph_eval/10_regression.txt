@@ -1,0 +1,25 @@
+REGRESSION TESTING
+
+Every meaningful AI change can break old behavior.
+
+Run regression when changing:
+- prompt
+- model
+- retrieval
+- chunking
+- tool schema
+- routing
+- business logic
+- output schema
+
+Keep a fixed set of:
+- happy paths
+- known failures
+- edge cases
+- customer-reported bugs
+
+Before release:
+compare old vs new
+inspect gains
+inspect regressions
+do not rely on aggregate score alone

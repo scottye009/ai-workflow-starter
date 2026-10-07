@@ -1,0 +1,20 @@
+RAG EVALUATION
+
+Evaluate RETRIEVAL and GENERATION separately.
+
+Retrieval:
+Recall@K = relevant evidence retrieved / all relevant evidence
+Precision@K = relevant retrieved / K
+Hit rate = any relevant result retrieved?
+MRR = how early first relevant result appears
+
+Generation:
+- groundedness
+- correctness
+- completeness
+- citation correctness
+- abstention when evidence is insufficient
+
+Debug:
+Correct evidence missing -> retrieval issue
+Correct evidence present but answer wrong -> generation/reasoning issue

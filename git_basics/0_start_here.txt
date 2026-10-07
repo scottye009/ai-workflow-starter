@@ -1,0 +1,99 @@
+GIT — WHEN TO USE WHAT
+
+Think of Git as four different jobs:
+
+1. INSPECT
+   Use when you first open a repo or before doing anything risky.
+
+   Commands:
+   git status
+   git branch --show-current
+   git log --oneline -5
+   git diff
+
+2. ISOLATE YOUR WORK
+   Use when starting a new bug fix, feature, or experiment.
+
+   Example:
+   git switch -c fix/payment-posting-duplicate
+
+3. SAVE A CHECKPOINT
+   Use after one coherent piece of work is working.
+
+   Example:
+   git add src/payment_posting.py tests/test_payment_posting.py
+   git commit -m "Fix duplicate payment posting retry"
+
+4. SHARE / INTEGRATE
+   Use when your work is ready for teammates.
+
+   Example:
+   git push -u origin fix/payment-posting-duplicate
+
+
+----------------------------------------
+FIRST 2 MINUTES IN AN UNFAMILIAR REPO
+----------------------------------------
+
+Run:
+
+git status
+git branch --show-current
+git log --oneline -5
+git remote -v
+
+What you are checking:
+
+git status
+- Are there uncommitted changes?
+- Are they yours?
+- Is the repo already dirty?
+
+git branch --show-current
+- Are you on main?
+- Are you already on someone else's feature branch?
+
+git log --oneline -5
+- What changed recently?
+- Does the repo look active / normal?
+
+git remote -v
+- Where would push go?
+
+
+----------------------------------------
+SAFE DEFAULT WORKFLOW
+----------------------------------------
+
+Scenario:
+You need to fix duplicate payment posting.
+
+1. Inspect
+git status
+
+2. Create your own branch
+git switch -c fix/payment-posting-duplicate
+
+3. Make changes
+
+4. Review what changed
+git diff
+
+5. Stage only relevant files
+git add src/payment_posting.py tests/test_payment_posting.py
+
+6. Review exactly what will be committed
+git diff --staged
+
+7. Commit
+git commit -m "Fix duplicate payment posting retry"
+
+8. Verify clean/expected state
+git status
+
+9. Push
+git push -u origin fix/payment-posting-duplicate
+
+
+RULE:
+If you are unsure whether a Git command is destructive, stop and inspect first.

@@ -1,0 +1,35 @@
+AI / LLM PIPELINE DESIGN
+
+REPO: [REPO_PATH]
+GOAL: [GOAL]
+INPUT: [INPUT_DESCRIPTION]
+OUTPUT: [OUTPUT_DESCRIPTION]
+RISK LEVEL: [LOW/MEDIUM/HIGH]
+
+Design the smallest reliable AI workflow.
+
+Separate:
+- deterministic logic
+- model judgment
+- tool/API calls
+- state
+- human review
+- validation
+
+For each model step, define:
+- exact input
+- exact output schema
+- uncertainty / abstain behavior
+- failure handling
+- evaluation method
+
+Also specify:
+- stop conditions
+- retries
+- timeout
+- idempotency for writes
+- logging / tracing
+- escalation conditions
+- end-to-end success metric
+
+Prefer a simple workflow over a fully autonomous agent unless dynamic tool choice is actually needed.

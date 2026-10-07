@@ -1,0 +1,40 @@
+AGENT EVALUATION
+
+Evaluate more than final answer.
+
+LEVEL 1: Model
+Was each model output valid/correct?
+
+LEVEL 2: Tool use
+Correct tool?
+Correct arguments?
+Correct permissions?
+
+LEVEL 3: Trajectory
+Did it take a sensible path?
+Unnecessary calls?
+Loops?
+Recovered from failure?
+
+LEVEL 4: Outcome
+Was the user/business goal actually achieved?
+
+LEVEL 5: Operations
+Latency?
+Cost?
+Escalation?
+Safety?
+Duplicate side effects?
+
+Useful metrics:
+- task success rate
+- tool selection accuracy
+- tool argument accuracy
+- avg steps
+- repeated-action rate
+- recovery rate
+- escalation rate
+- cost/task
+- p95 latency
+
+Tool success != business success.

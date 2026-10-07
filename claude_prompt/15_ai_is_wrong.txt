@@ -1,0 +1,29 @@
+CUSTOMER SAYS "THE AI IS WRONG"
+
+CUSTOMER REPORT:
+[QUESTION]
+
+EXAMPLE:
+[EXAMPLE]
+
+Do not assume this is a model problem.
+
+Determine whether the issue comes from:
+- incorrect source data
+- missing context
+- retrieval failure
+- prompt / instructions
+- model reasoning
+- output parsing
+- business rule mismatch
+- tool/API execution
+- stale configuration
+- downstream behavior
+
+Return:
+1. What I should ask the customer
+2. What I should inspect internally
+3. Most likely failure categories
+4. Immediate safe workaround
+5. Root-cause path
+6. How to verify the fix

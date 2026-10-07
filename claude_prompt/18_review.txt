@@ -1,0 +1,28 @@
+CODE REVIEW
+
+PATH / DIFF: [PATH_OR_DIFF]
+GOAL: [GOAL]
+
+Review this as if it were a teammate's PR.
+
+Focus on:
+1. correctness
+2. whether it satisfies [GOAL]
+3. unnecessary scope
+4. edge cases
+5. data integrity
+6. API / schema compatibility
+7. security / privacy
+8. retry / timeout / idempotency
+9. observability
+10. test gaps
+11. simpler alternatives
+
+Return only:
+- Blocking
+- High priority
+- Medium priority
+- Nice to have
+- Missing validation
+
+Do not modify code unless I ask.

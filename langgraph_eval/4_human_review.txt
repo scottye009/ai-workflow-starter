@@ -1,0 +1,23 @@
+HUMAN-IN-THE-LOOP
+
+Use human review when:
+- confidence is low
+- evidence conflicts
+- action is high consequence
+- external write is irreversible
+- policy/business rule is ambiguous
+
+Pattern:
+process
+  -> deterministic checks
+  -> if safe/confident: continue
+  -> else: needs_review
+
+Review payload should include:
+- original input
+- proposed result/action
+- evidence
+- reason for escalation
+- exact decision required from reviewer
+
+Do not send humans raw traces if a concise evidence packet is enough.

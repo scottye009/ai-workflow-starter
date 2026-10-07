@@ -1,0 +1,59 @@
+GIT BASICS — PRACTICAL GUIDE
+
+FIRST TIME SETUP:
+0_setup_new_repo.txt    Turn a normal folder into a Git repo + connect GitHub
+0_start_here.txt        Mental model + safe daily workflow
+
+COMMON WORKFLOW:
+1_status_diff.txt       Inspect current state
+2_branch.txt            Branch basics
+3_stage_commit.txt      Stage / commit
+4_sync.txt              Fetch / pull / update
+5_push_pr.txt           Push + PR prep
+
+WHEN SOMETHING GOES WRONG:
+6_undo.txt              Undo common mistakes
+7_stash.txt             Temporarily save unfinished work
+8_conflicts.txt         Merge conflict workflow
+9_history.txt           Inspect history
+10_reflog_recovery.txt  Recover lost local commits
+
+USEFUL FOR ONSITE / PARALLEL WORK:
+11_worktree.txt         Clean isolated workspace
+12_pre_pr_checklist.txt Final review
+13_dangerous_commands.txt Commands requiring caution
+
+
+==================================================
+IF YOU JUST CREATED / COPIED A STARTER FOLDER
+==================================================
+
+Example folder:
+
+/Users/yesc/Desktop/ai-workflow-starter
+
+Start with:
+
+cd /Users/yesc/Desktop/ai-workflow-starter
+git init
+git branch -M main
+git status
+
+Then follow:
+0_setup_new_repo.txt
+
+
+==================================================
+NORMAL DAILY SEQUENCE
+==================================================
+
+git status
+git switch -c fix/payment-posting-duplicate
+
+# edit files
+
+git diff
+git add src/payment_posting.py tests/test_payment_posting.py
+git diff --staged
+git commit -m "Fix duplicate payment posting retry"
+git push -u origin fix/payment-posting-duplicate

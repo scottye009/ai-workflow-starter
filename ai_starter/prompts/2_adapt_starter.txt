@@ -1,0 +1,31 @@
+ADAPT THE STARTER KIT TO THIS TASK
+
+WORKING REPO: [PATH]
+GOAL: [GOAL]
+INPUT: [INPUT]
+DESIRED OUTPUT: [OUTPUT]
+CONSTRAINTS: [CONSTRAINTS]
+
+Inspect the working repo and this ai_starter folder.
+
+Do not automatically use every starter file.
+
+Choose the smallest useful foundation:
+- plain deterministic Python
+- structured LLM output
+- retrieval / RAG
+- bounded tool-using agent
+- LangGraph stateful workflow
+
+Explain your choice in 3-5 sentences.
+
+Then provide:
+1. Current workflow
+2. Minimal target architecture
+3. Exact files to reuse
+4. Exact files to create/change
+5. Risks / assumptions
+6. Test/eval plan
+
+Do not implement until the plan is clear.
+Prefer a working, inspectable prototype over framework complexity.

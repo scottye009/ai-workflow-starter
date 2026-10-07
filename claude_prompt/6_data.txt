@@ -1,0 +1,29 @@
+DATA / CSV / EXCEL / JSON INVESTIGATION
+
+DATA PATH: [DATA_PATH]
+GOAL: [GOAL]
+OUTPUT PATH: [OUTPUT_PATH]
+
+Before transforming anything, inspect the data.
+
+Report:
+1. Files / tables / sheets present
+2. Row counts
+3. Columns and inferred types
+4. Key identifiers
+5. Missingness
+6. Duplicates
+7. Unexpected values / distributions
+8. Date / code / unit inconsistencies
+9. Candidate source-of-truth fields
+10. Data-quality issues affecting [GOAL]
+
+Then propose the smallest transformation.
+
+Requirements:
+- source data read-only
+- preserve provenance
+- do not silently drop failed records
+- log transformations and failures
+- make rerunnable
+- validate before/after row counts and key fields

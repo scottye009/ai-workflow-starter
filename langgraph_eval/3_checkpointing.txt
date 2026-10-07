@@ -1,0 +1,23 @@
+CHECKPOINTING / RESUME
+
+Use persistence when:
+- tasks are long-running
+- API/model calls are expensive
+- workflows pause for human review
+- retries should resume instead of restart
+- you need auditability
+
+Important:
+Checkpointing does NOT automatically mean "do not rerun completed work" for every invocation pattern.
+Understand how your graph is invoked and whether you are supplying fresh input that restarts execution.
+
+Use:
+- stable thread_id
+- graph/model/data version when stale checkpoints are risky
+- explicit reset/recompute policy
+- careful handling of PHI / sensitive state
+
+Questions:
+What state is safe to persist?
+When is a checkpoint invalid?
+How do we intentionally rerun?

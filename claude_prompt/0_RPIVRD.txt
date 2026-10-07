@@ -1,0 +1,59 @@
+R-P-I-V-R-D
+Read -> Plan -> Implement -> Verify -> Review -> Deliver
+
+REPO: [REPO_PATH]
+GOAL: [GOAL]
+QUESTION / TASK: [QUESTION]
+CONSTRAINTS: [CONSTRAINTS]
+
+READ
+Inspect the repository and relevant files first. Do not modify anything yet.
+Identify:
+- current workflow
+- main entry point(s)
+- files/components related to [GOAL]
+- inputs, outputs, state, APIs, data sources, external dependencies
+- tests and run commands
+- confirmed facts vs assumptions vs unknowns
+
+PLAN
+Propose the smallest reasonable solution.
+Include:
+- likely root cause or implementation approach
+- exact files to change
+- what not to change
+- edge cases / risks
+- validation plan
+Ask only questions that materially affect the solution.
+Do not implement yet.
+
+IMPLEMENT
+After I approve the plan, implement only the agreed scope.
+Reuse existing patterns.
+Avoid unrelated refactors or unnecessary dependencies.
+If scope must expand, stop and explain why first.
+
+VERIFY
+Run the most relevant tests/checks.
+Use representative inputs.
+Show actual results.
+Mark anything not verified.
+
+REVIEW
+Review the diff for:
+- logic bugs
+- regression risk
+- bad assumptions
+- null/malformed inputs
+- security/privacy
+- retry/timeout/idempotency
+- unnecessary complexity
+- missing tests
+
+DELIVER
+Return:
+1. What you found
+2. What you changed
+3. How you verified it
+4. Remaining risks / unknowns
+5. Recommended next step

@@ -1,0 +1,63 @@
+HISTORY — FIND WHY CODE LOOKS LIKE THIS
+
+USE WHEN:
+- debugging a regression
+- understanding unfamiliar code
+- finding when behavior changed
+- finding who knows the area
+
+
+----------------------------------------
+COMPACT HISTORY
+----------------------------------------
+
+git log --oneline --graph --decorate --all
+
+
+----------------------------------------
+HISTORY FOR ONE FILE
+----------------------------------------
+
+git log -- src/payment_posting.py
+
+
+----------------------------------------
+SHOW A COMMIT
+----------------------------------------
+
+git show a31bc55
+
+
+----------------------------------------
+WHO CHANGED A LINE
+----------------------------------------
+
+git blame src/payment_posting.py
+
+Use when:
+You want context for a specific line.
+Do not use it to blame people socially.
+
+
+----------------------------------------
+FIND WHEN TEXT WAS ADDED/REMOVED
+----------------------------------------
+
+Scenario:
+When was "needs_review" added?
+
+git log -S"needs_review" --oneline
+
+
+----------------------------------------
+FIND DIFFS MATCHING A PATTERN
+----------------------------------------
+
+git log -G"idempotency" --oneline
+
+
+----------------------------------------
+COMPARE BRANCHES
+----------------------------------------
+
+git diff main...fix/payment-posting-duplicate

@@ -1,0 +1,21 @@
+WORKING VS FAILING CASE
+
+REPO: [REPO_PATH]
+
+WORKING CASE:
+[WORKING_EXAMPLE]
+
+FAILING CASE:
+[FAILING_EXAMPLE]
+
+Compare the two cases and identify the smallest meaningful differences.
+
+Trace those differences through the relevant workflow.
+
+Return:
+1. Important differences
+2. Likely causal vs incidental differences
+3. Where behavior diverges
+4. Ranked hypotheses
+5. Best next check
+6. Minimal fix if root cause is confirmed

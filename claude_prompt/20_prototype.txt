@@ -1,0 +1,26 @@
+FAST PROTOTYPE
+
+GOAL: [GOAL]
+INPUT: [INPUT]
+OUTPUT: [OUTPUT]
+TIME LIMIT: [TIME_LIMIT]
+
+Build the smallest working prototype that demonstrates the core workflow.
+
+Priorities:
+1. correctness of main path
+2. transparent assumptions
+3. simple structure
+4. easy manual testing
+5. clear failure handling
+
+Avoid:
+- premature abstraction
+- complex infrastructure
+- unnecessary frameworks
+- polishing before core behavior works
+
+At the end state:
+1. What works
+2. What is mocked / simplified
+3. What you would harden for production

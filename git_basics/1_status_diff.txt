@@ -1,0 +1,108 @@
+STATUS / DIFF — USE THIS CONSTANTLY
+
+WHEN TO USE:
+- when you first open the repo
+- before editing
+- before committing
+- after Claude Code changes files
+- before pushing
+- whenever you are unsure what changed
+
+
+----------------------------------------
+git status
+----------------------------------------
+
+Example:
+git status
+
+Tells you:
+- current branch
+- modified files
+- staged files
+- untracked files
+
+Example output might show:
+
+modified:   src/payment_posting.py
+modified:   tests/test_payment_posting.py
+untracked:  debug_output.json
+
+Interpretation:
+- src/payment_posting.py changed
+- test file changed
+- debug_output.json is new and not tracked
+
+
+----------------------------------------
+git status --short
+----------------------------------------
+
+Example:
+git status --short
+
+Possible output:
+
+ M src/payment_posting.py
+M  tests/test_payment_posting.py
+?? debug_output.json
+
+Meaning:
+" M" = modified but not staged
+"M " = staged
+"??" = untracked
+
+
+----------------------------------------
+git diff
+----------------------------------------
+
+WHEN:
+Review changes that are NOT staged yet.
+
+Example:
+git diff
+
+Specific file:
+git diff src/payment_posting.py
+
+
+----------------------------------------
+git diff --staged
+----------------------------------------
+
+WHEN:
+Before commit. This shows exactly what your commit will contain.
+
+Example:
+git diff --staged
+
+
+----------------------------------------
+COMPARE YOUR BRANCH TO MAIN
+----------------------------------------
+
+Example:
+git diff main...HEAD
+
+Use when:
+- preparing a PR
+- checking the total effect of your branch
+
+
+----------------------------------------
+SEE ONLY CHANGED FILE NAMES
+----------------------------------------
+
+git diff --name-only
+
+Example output:
+src/payment_posting.py
+tests/test_payment_posting.py
+
+
+BEST PRACTICE:
+Before every commit:
+git status
+git diff
+git diff --staged

@@ -1,0 +1,71 @@
+COMMANDS TO TREAT AS HIGH-RISK
+
+Do not memorize these as normal tools.
+Memorize that they require caution.
+
+
+----------------------------------------
+git reset --hard
+----------------------------------------
+
+Example:
+git reset --hard HEAD~1
+
+Can destroy uncommitted work.
+
+
+----------------------------------------
+git clean -fd
+----------------------------------------
+
+Deletes untracked files/directories.
+
+Potentially deletes:
+debug scripts
+local datasets
+generated outputs
+
+
+----------------------------------------
+git push --force
+----------------------------------------
+
+Can overwrite remote branch history.
+
+
+----------------------------------------
+git branch -D
+----------------------------------------
+
+Force-deletes an unmerged branch.
+
+
+----------------------------------------
+git restore .
+----------------------------------------
+
+Can discard unstaged changes across many files.
+
+
+----------------------------------------
+SAFE HABIT BEFORE RISKY COMMAND
+----------------------------------------
+
+Run:
+
+git status
+git diff
+git branch --show-current
+
+Then preserve work if needed:
+
+git stash -u
+
+or:
+
+git add -A
+git commit -m "WIP checkpoint before history change"
+
+
+If unsure:
+do not run the destructive command.

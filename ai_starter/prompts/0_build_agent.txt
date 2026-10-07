@@ -1,0 +1,32 @@
+BUILD / EXTEND A MINIMAL AGENT
+
+REPO: [PATH]
+GOAL: [GOAL]
+INPUT: [INPUT]
+OUTPUT: [OUTPUT]
+AVAILABLE TOOLS / APIS: [TOOLS]
+RISK LEVEL: [LOW/MEDIUM/HIGH]
+
+First inspect the existing project and 0_agent_minimal.py.
+Do not code yet.
+
+Decide whether this task actually needs an agent.
+If a deterministic workflow is enough, say so and use the simpler design.
+
+If an agent is justified, define:
+1. State
+2. Available tools
+3. Read vs write tools
+4. Tool schemas
+5. Stop conditions
+6. Maximum steps / timeout
+7. Retry behavior
+8. Idempotency requirements
+9. Human approval points
+10. Evaluation criteria
+
+Then propose the smallest implementation using the project's existing model SDK.
+
+Keep model-provider-specific code inside model_adapter.py when possible.
+Do not give the model unrestricted filesystem, shell, database, or production-write access.
+After approval, implement and add 3-5 representative eval cases.

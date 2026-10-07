@@ -1,0 +1,24 @@
+AI STARTER KIT
+
+Use the smallest file that fits the task.
+
+0_agent_minimal.py       Minimal bounded tool-using agent loop
+1_structured_output.py   Pydantic validation for model outputs
+2_rag_minimal.py         Minimal retrieval + grounded-answer prompt
+3_eval_minimal.py        Small classification / agent eval helpers
+4_langgraph_minimal.py   Minimal stateful LangGraph workflow
+model_adapter.py         One function to connect your available LLM SDK
+
+prompts/
+0_build_agent.txt        Prompt Claude Code to build/extend an agent
+1_build_rag.txt          Prompt Claude Code to build/extend RAG
+2_adapt_starter.txt      Adapt these foundations to a new task
+3_debug_ai.txt           Debug AI/agent/RAG failures
+
+Suggested onsite flow:
+1. Copy this folder into the working repo.
+2. Open prompts/2_adapt_starter.txt.
+3. Replace [PATH], [GOAL], [INPUT], [OUTPUT].
+4. Let Claude inspect the repo before selecting a starter.
+5. Start with plain Python; use LangGraph only if state/branching/resume actually helps.
+6. Add eval cases before adding architecture.

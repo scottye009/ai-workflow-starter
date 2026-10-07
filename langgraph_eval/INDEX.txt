@@ -1,0 +1,27 @@
+LANGGRAPH + EVAL STARTER
+
+0_langgraph_concepts.txt        Core mental model
+1_state_design.txt              Designing state
+2_nodes_routing.txt             Nodes / edges / routing
+3_checkpointing.txt             Persistence / resume
+4_human_review.txt              HITL pattern
+5_debugging.txt                 Debugging LangGraph
+6_eval_metrics.txt              Core eval metrics
+7_eval_design.txt               How to build an eval set
+8_agent_eval.txt                Agent-specific evaluation
+9_rag_eval.txt                  RAG evaluation
+10_regression.txt               Regression testing
+11_observability.txt            Logs / traces / metrics
+
+examples/
+minimal_graph.py
+conditional_graph.py
+human_review_graph.py
+eval_classification.py
+eval_agent_runs.py
+
+prompts/
+0_build_langgraph.txt
+1_debug_langgraph.txt
+2_build_eval.txt
+3_add_regression.txt

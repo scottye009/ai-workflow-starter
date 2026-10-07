@@ -1,0 +1,25 @@
+DEBUGGING LANGGRAPH
+
+When a run fails, inspect:
+1. input state
+2. node entered
+3. node output
+4. route selected
+5. tool/model call
+6. state after update
+7. next node
+
+Common failures:
+- missing state key
+- unexpected None
+- wrong routing condition
+- state overwritten
+- stale checkpoint
+- same node repeated
+- retry loop
+- hidden side effect
+- bad tool result
+- model output not validated
+
+Find the FIRST incorrect state transition.
+Do not debug only from the final error.

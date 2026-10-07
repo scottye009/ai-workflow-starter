@@ -1,0 +1,21 @@
+ADD REGRESSION TESTS
+
+REPO: [PATH]
+CHANGE: [CHANGE]
+KNOWN FAILURES: [KNOWN_FAILURES]
+
+Create a compact regression set covering:
+- original happy path
+- bug being fixed
+- nearby edge cases
+- malformed/null input
+- conflicting evidence
+- one case expected to escalate
+- one case expected to fail safely
+
+For each:
+input
+expected output/outcome
+why it matters
+
+Then implement the smallest automated check that can catch recurrence.

@@ -1,0 +1,27 @@
+SQL / DATA MISMATCH
+
+REPO / SQL PATH: [PATH]
+QUESTION: [QUESTION]
+EXPECTED RESULT: [EXPECTED]
+ACTUAL RESULT: [ACTUAL]
+
+Inspect the query and source schema first.
+
+Check:
+- table grain
+- join keys
+- join direction
+- duplicate amplification
+- filters
+- null handling
+- date logic
+- grouping / aggregation
+- code mappings
+- source-of-truth field
+
+Return:
+1. Current query logic
+2. Likely reason for mismatch
+3. Evidence
+4. Minimal corrected query / change
+5. Validation queries to prove the fix
