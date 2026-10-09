@@ -1,11 +1,11 @@
 BUILD / EXTEND MINIMAL RAG
 
-REPO: [PATH]
-DATA / DOCUMENTS: [DATA_PATH]
-QUESTION TYPE: [QUESTION_TYPE]
-GOAL: [GOAL]
+REPO: [PATH]                        e.g., /Users/yesc/Desktop/LLM_Pdac/4_pdac-agentic-curation-prod
+DATA / DOCUMENTS: [DATA_PATH]       e.g., radiology/pathology report_text already loaded by 21_ct_retrieval_agent and 31_path_extraction_agent
+QUESTION TYPE: [QUESTION_TYPE]      e.g., "Did this patient have a pre-NAT CT showing vascular involvement?"
+GOAL: [GOAL]                        e.g., Ground radiology/pathology extraction answers in the actual report text instead of model memory
 
-Inspect 2_rag_minimal.py and the existing project first.
+Inspect 02_rag_minimal.py and the existing project first.
 Do not code yet.
 
 Design the smallest RAG system that satisfies [GOAL].

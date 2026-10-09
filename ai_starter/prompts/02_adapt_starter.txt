@@ -1,10 +1,10 @@
 ADAPT THE STARTER KIT TO THIS TASK
 
-WORKING REPO: [PATH]
-GOAL: [GOAL]
-INPUT: [INPUT]
-DESIRED OUTPUT: [OUTPUT]
-CONSTRAINTS: [CONSTRAINTS]
+WORKING REPO: [PATH]              e.g., /Users/yesc/Desktop/LLM_Pdac/4_pdac-agentic-curation-prod
+GOAL: [GOAL]                      e.g., Add a real QA policy to pipeline/nodes.py::qa_node instead of the current "needs_review if errors else ok" stub
+INPUT: [INPUT]                    e.g., a completed PatientState after radiology_extraction/pathology_extraction (see pipeline/state.py)
+DESIRED OUTPUT: [OUTPUT]          e.g., status set to "needs_review" for cases like DF342952029389 (NAT=Y, pre_nat_ct=miss), "ok" otherwise
+CONSTRAINTS: [CONSTRAINTS]        e.g., no changes to resource/.env or the 10_whipple_agent cohort-bootstrap step; keep PHI out of logs
 
 Inspect the working repo and this ai_starter folder.
 

@@ -1,13 +1,13 @@
 BUILD / EXTEND A MINIMAL AGENT
 
-REPO: [PATH]
-GOAL: [GOAL]
-INPUT: [INPUT]
-OUTPUT: [OUTPUT]
-AVAILABLE TOOLS / APIS: [TOOLS]
-RISK LEVEL: [LOW/MEDIUM/HIGH]
+REPO: [PATH]                      e.g., /Users/yesc/Desktop/LLM_Pdac/4_pdac-agentic-curation-prod
+GOAL: [GOAL]                      e.g., Add a QA node that flags NAT=Y patients missing a pre-NAT CT as needs_review instead of ok
+INPUT: [INPUT]                    e.g., one PatientState row (patdurablekey, nat_status, pre_surgery_ct, pre_nat_ct)
+OUTPUT: [OUTPUT]                  e.g., updated status field: "ok" | "needs_review" | "error"
+AVAILABLE TOOLS / APIS: [TOOLS]   e.g., retrieve_ct_for_patient(), RadAgentsPipeline.run(), PathAgentsPipeline.run()
+RISK LEVEL: [LOW/MEDIUM/HIGH]     e.g., HIGH — real patient PHI feeding a research cohort
 
-First inspect the existing project and 0_agent_minimal.py.
+First inspect the existing project and 00_agent_minimal.py.
 Do not code yet.
 
 Decide whether this task actually needs an agent.

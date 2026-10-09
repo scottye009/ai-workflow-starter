@@ -1,8 +1,8 @@
 ADD REGRESSION TESTS
 
-REPO: [PATH]
-CHANGE: [CHANGE]
-KNOWN FAILURES: [KNOWN_FAILURES]
+REPO: [PATH]                           e.g., /Users/yesc/Desktop/LLM_Pdac/4_pdac-agentic-curation-prod/pipeline
+CHANGE: [CHANGE]                       e.g., qa_node now flags NAT=Y + pre_nat_ct=miss as needs_review instead of ok
+KNOWN FAILURES: [KNOWN_FAILURES]       e.g., checkpoint-overwrite-on-reinvoke bug (section 7 of design/langgraph_orchestration.md); patient DF342952029389's missing pre-NAT CT
 
 Create a compact regression set covering:
 - original happy path

@@ -1,9 +1,9 @@
 BUILD A LANGGRAPH WORKFLOW
 
-REPO: [PATH]
-GOAL: [GOAL]
-INPUT: [INPUT]
-OUTPUT: [OUTPUT]
+REPO: [PATH]      e.g., /Users/yesc/Desktop/LLM_Pdac/4_pdac-agentic-curation-prod/pipeline
+GOAL: [GOAL]      e.g., Add a human-review interrupt before qa_node for any patient where pre_nat_ct is "miss" on a NAT=Y patient
+INPUT: [INPUT]    e.g., one PatientState (patdurablekey, nat_status, pre_surgery_ct, pre_nat_ct, radiology_results, pathology_result)
+OUTPUT: [OUTPUT]  e.g., final PatientState with status set to ok / needs_review / error, checkpointed under thread_id=patdurablekey
 
 Inspect the current workflow first.
 

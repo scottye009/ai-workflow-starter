@@ -1,8 +1,8 @@
 BUILD AN EVAL
 
-SYSTEM: [GOAL]
-DATA: [EVAL_DATA]
-BUSINESS RISK: [BUSINESS_RISK]
+SYSTEM: [GOAL]                   e.g., the 20_nat_date_agent NAT status / NAT start-date extraction step
+DATA: [EVAL_DATA]                e.g., 20_nat_date_agent/data/0d1_PATH-RAD-484-nat-eval.xlsx (NAT-agent / NAT Start Date-agent ground-truth columns)
+BUSINESS RISK: [BUSINESS_RISK]   e.g., a wrong NAT status/date misclassifies a PDAC patient's treatment timeline in the research cohort
 
 Define:
 1. unit of evaluation

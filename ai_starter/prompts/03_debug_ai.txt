@@ -1,10 +1,10 @@
 DEBUG AI / AGENT / RAG SYSTEM
 
-REPO: [PATH]
-PROBLEM: [QUESTION]
-EXPECTED: [EXPECTED]
-ACTUAL: [ACTUAL]
-EXAMPLE / TRACE: [PASTE]
+REPO: [PATH]                 e.g., /Users/yesc/Desktop/LLM_Pdac/4_pdac-agentic-curation-prod
+PROBLEM: [QUESTION]          e.g., "Re-running run_pipeline.py on an already-finished patient re-runs the agents instead of reusing the checkpoint"
+EXPECTED: [EXPECTED]         e.g., a finished thread_id (status already ok/needs_review/error) should be skipped, zero new LLM/AIR calls
+ACTUAL: [ACTUAL]             e.g., graph.invoke() restarts from START and overwrites the existing checkpoint, since a non-None input is treated as new input
+EXAMPLE / TRACE: [PASTE]     e.g., thread_id=D9C04F8154A44C; snapshot.next == () and snapshot.values["status"] == "ok" before the second invoke() call
 
 Find the first point where expected and actual behavior diverge.
 

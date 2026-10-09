@@ -1,9 +1,9 @@
 DEBUG LANGGRAPH
 
-REPO: [PATH]
-RUN / THREAD ID: [ID]
-EXPECTED: [EXPECTED]
-ACTUAL: [ACTUAL]
+REPO: [PATH]              e.g., /Users/yesc/Desktop/LLM_Pdac/4_pdac-agentic-curation-prod/pipeline
+RUN / THREAD ID: [ID]     e.g., thread_id=D9C04F8154A44C (config={"configurable": {"thread_id": "D9C04F8154A44C"}})
+EXPECTED: [EXPECTED]      e.g., re-invoking a finished thread_id resumes/skips without re-running agents
+ACTUAL: [ACTUAL]          e.g., graph.invoke() restarts from START, re-running nat_status/ct_retrieval/extraction and overwriting the checkpoint
 
 Trace:
 1. initial state
